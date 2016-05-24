@@ -2,9 +2,12 @@ package com.lukas.verstraete.restaurants_domain.domain;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -19,10 +22,16 @@ public class Restaurant implements Serializable
     @NotEmpty (message = "Please enter a name for the restaurant.")
     private String name;
     
-    @NotNull (message = "Please provide an adress.")
+    
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @NotNull
+    @Valid
     private Adress adress;
     
-    public Restaurant(){}
+    public Restaurant()
+    {
+        adress = new Adress();
+    }
 
     public long getId() {
         return id;

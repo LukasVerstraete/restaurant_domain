@@ -2,6 +2,7 @@ package com.lukas.verstraete.restaurants_domain.service;
 
 import com.lukas.verstraete.restaurants_domain.db.Database;
 import com.lukas.verstraete.restaurants_domain.db.DatabaseFactory;
+import com.lukas.verstraete.restaurants_domain.domain.Adress;
 import com.lukas.verstraete.restaurants_domain.domain.Restaurant;
 import com.lukas.verstraete.restaurants_domain.util.ServiceException;
 import java.util.List;

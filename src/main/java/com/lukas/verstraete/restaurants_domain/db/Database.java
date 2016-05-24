@@ -27,6 +27,7 @@ public abstract class Database<E> {
             entityManager.persist(object);
             entityManager.flush();
             entityManager.getTransaction().commit();
+            entityManager.clear();
         }
         catch(Exception e)
         {
@@ -42,6 +43,7 @@ public abstract class Database<E> {
             entityManager.merge(object);
             entityManager.flush();
             entityManager.getTransaction().commit();
+            entityManager.clear();
         }
         catch(Exception e)
         {
@@ -68,7 +70,9 @@ public abstract class Database<E> {
         try
         {
             Query query = entityManager.createQuery(queryString);
-            return new ArrayList<>(query.getResultList());
+            ArrayList<E> list = new ArrayList<>(query.getResultList());
+            entityManager.clear();
+            return list;
         }
         catch(Exception e)
         {
@@ -86,6 +90,7 @@ public abstract class Database<E> {
             entityManager.remove(object);
             entityManager.flush();
             entityManager.getTransaction().commit();
+            entityManager.clear();
         }
         catch(Exception e)
         {
