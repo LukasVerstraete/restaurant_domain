@@ -57,7 +57,9 @@ public class Adress implements Serializable
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
-
+    
+    
+    //TODO: need hash
     @Override
     public int hashCode() {
         int hash = 3;
